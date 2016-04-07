@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="First Category">
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="switch_connect"
+            android:summaryOff="close up data"
+            android:summaryOn="allow up data"
+            android:title="switch up data" />
+        <ListPreference
+            android:defaultValue="default"
+            android:entries="@array/uptime"
+            android:entryValues="@array/uptime"
+            android:key="time"
+            android:summary="点击选择上传时间"
+            android:title="上传时间" />
+
+    </PreferenceCategory>
+</PreferenceScreen>

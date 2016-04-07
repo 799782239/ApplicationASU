@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.shinelw.library.ColorArcProgressBar
+        android:layout_marginTop="16dp"
+        android:id="@+id/bar1"
+        android:layout_width="350dp"
+        android:layout_height="350dp"
+        android:layout_centerHorizontal="true"
+        app:back_color="@android:color/darker_gray"
+        app:back_width="2dp"
+        app:front_color1="#00cc00"
+        app:front_color2="#009688"
+        app:front_color3="#00796B"
+        app:front_width="10dp"
+        app:is_need_content="true"
+        app:is_need_dial="true"
+        app:is_need_title="true"
+        app:is_need_unit="true"
+        app:max_value="35"
+        app:string_title="平均信号强度"
+        app:string_unit="asu"
+        app:total_engle="270" />
+
+    <TextView
+        android:id="@+id/beat_my_asu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textColor="@color/colorAccent"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/beat_world"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/linear_btn"
+        android:layout_below="@+id/beat_my_asu"
+        android:layout_margin="16dp"
+        android:textSize="24sp" />
+
+    <LinearLayout
+        android:id="@+id/linear_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/my_share"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:layout_weight="1"
+            android:background="@color/colorMainLine"
+            android:text="分享到"
+            android:textColor="@color/colorWhite" />
+
+        <Button
+            android:id="@+id/my_around"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:layout_weight="1"
+            android:background="@color/colorMainLine"
+            android:text="查看周围的人"
+            android:textColor="@color/colorWhite" />
+    </LinearLayout>
+
+
+</RelativeLayout>

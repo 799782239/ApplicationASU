@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:fitsSystemWindows="true"
+    tools:context="com.example.yan.myapplication.ScrollingActivity">
+
+
+    <TextView
+        android:id="@+id/startTimeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:text="startTime"
+        android:textSize="24sp" />
+
+
+    <TextView
+        android:id="@+id/startTimeEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/startTimeTextView"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="4dp"
+        android:text="2015-1-1 0:0:0" />
+
+
+    <TextView
+        android:id="@+id/endTimeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/startTimeEdit"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:text="endtime"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/endTimeEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/endTimeTextView"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="4dp"
+        android:text="2015-1-1 0:0:0" />
+
+
+    <lecho.lib.hellocharts.view.LineChartView
+        android:id="@+id/lineChart1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/endTimeEdit"
+        android:layout_marginTop="8dp"
+        android:visibility="gone" />
+
+    <lecho.lib.hellocharts.view.PreviewLineChartView
+        android:id="@+id/previewLine"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/endTimeEdit"
+        android:visibility="gone" />
+
+
+    <ImageButton
+        android:id="@+id/showChart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/endTimeTextView"
+        android:layout_alignEnd="@+id/endTimeTextView"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="30dp"
+        android:background="@android:color/transparent"
+        android:src="@android:drawable/ic_menu_rotate" />
+
+
+</RelativeLayout>
