@@ -14,21 +14,29 @@ import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
+import android.util.Log;
 import android.widget.Toast;
 
+import com.android.volley.Request;
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
+import com.example.yan.myapplication.Imp.OperateCallBack;
+import com.example.yan.myapplication.operate.BaseOperate;
+import com.example.yan.myapplication.utils.ToastUtils;
 import com.google.gson.Gson;
 import com.yan.db.DbConfig;
 
+import org.json.JSONObject;
 import org.xutils.common.Callback;
 import org.xutils.http.RequestParams;
 import org.xutils.x;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by yan on 2015/12/8.
@@ -108,59 +116,82 @@ public class MyService extends Service {
                             userData.setAsu(asu);
                             date = new Date(System.currentTimeMillis());
                             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                            String model = android.os.Build.MODEL;
                             userData.setDate(sdf.format(date));
                             userData.setLaLatitude(mLatitude);
                             userData.setLongitude(mLongitude);
+                            userData.setModel(model);
                             tempType = type;
                             userData.setType(tempType);
                             SaveData.data = userData;
 //                            System.out.println(SaveData.data.get(SaveData.data.size() - 1).getAsu() + ":" + SaveData.data.get(SaveData.data.size() - 1).getDate());
                             Gson gson = new Gson();
-                            String str = gson.toJson(userData);
+                            final String str = gson.toJson(userData);
 
                             //开启上传线程
                             UpThread upThread = new UpThread();
                             upThread.start();
                             RequestParams params = new RequestParams(Config.URL_HOST);
                             params.addBodyParameter("Json", str);
-                            mContentResolver = getContentResolver();
-                            x.http().post(params, new Callback.CommonCallback<String>() {
+
+                            BaseOperate baseOperate = new BaseOperate();
+                            baseOperate.requestServer(Request.Method.POST, Config.URL_HOST, new OperateCallBack() {
                                 @Override
-                                public void onSuccess(String result) {
-                                    if (result.equals("success")) {
-                                        System.out.println("------success--->");
-                                        mBackgroundQueryHandler = new BackgroundQueryHandler(mContentResolver);
-                                        ContentValues c = new ContentValues();
-                                        c.put(DbConfig.ASU, asu);
-                                        c.put(DbConfig.ALTITUDE, mLatitude);
-                                        c.put(DbConfig.LONGITUDE, mLongitude);
-                                        c.put(DbConfig.TYPE, tempType);
-                                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                                        c.put(DbConfig.DATE, sdf.format(date));
-                                        mBackgroundQueryHandler.startInsert(0, null, DbConfig.CONTENT_NOTE_DATA_URI, c);
-                                    } else {
-                                        Toast.makeText(getApplicationContext(), "未能成功上传", Toast.LENGTH_SHORT).show();
-                                    }
-                                    System.out.println("-----result-->" + result);
+                                public void successCallBack(String result) {
+                                    Log.i("aa", result);
                                 }
 
                                 @Override
-                                public void onError(Throwable ex, boolean isOnCallback) {
-                                    Toast.makeText(x.app(), ex.getMessage() + "", Toast.LENGTH_SHORT);
-                                    System.out.println("------error----->" + ex.getMessage());
+                                public void failCallBack() {
+                                    ToastUtils.MyToast(getApplicationContext(),"请检查网络");
                                 }
 
                                 @Override
-                                public void onCancelled(CancelledException cex) {
-
+                                public Map<String, String> setMap() {
+                                    Map<String, String> map = new HashMap<String, String>();
+                                    map.put("Json", str);
+                                    return map;
                                 }
+                            }, getApplicationContext());
 
-                                @Override
-                                public void onFinished() {
-
-                                }
-
-                            });
+//                            mContentResolver = getContentResolver();
+//                            x.http().post(params, new Callback.CommonCallback<String>() {
+//                                @Override
+//                                public void onSuccess(String result) {
+//                                    if (result.equals("success")) {
+//                                        System.out.println("------success--->");
+//                                        mBackgroundQueryHandler = new BackgroundQueryHandler(mContentResolver);
+//                                        ContentValues c = new ContentValues();
+//                                        c.put(DbConfig.ASU, asu);
+//                                        c.put(DbConfig.ALTITUDE, mLatitude);
+//                                        c.put(DbConfig.LONGITUDE, mLongitude);
+//                                        c.put(DbConfig.TYPE, tempType);
+//                                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//                                        c.put(DbConfig.DATE, sdf.format(date));
+//                                        mBackgroundQueryHandler.startInsert(0, null, DbConfig.CONTENT_NOTE_DATA_URI, c);
+//                                    } else {
+//                                        Toast.makeText(getApplicationContext(), "未能成功上传", Toast.LENGTH_SHORT).show();
+//                                    }
+//                                    System.out.println("-----result-->" + result);
+//                                }
+//
+//                                @Override
+//                                public void onError(Throwable ex, boolean isOnCallback) {
+//                                    Toast.makeText(x.app(), ex.getMessage() + "", Toast.LENGTH_SHORT);
+//                                    System.out.println("------error----->" + ex.getMessage());
+//                                }
+//
+//                                @Override
+//                                public void onCancelled(CancelledException cex) {
+//
+//                                }
+//
+//                                @Override
+//                                public void onFinished() {
+//
+//                                }
+//
+//                            });
                             System.out.println(str);
 
                         }
@@ -192,6 +223,7 @@ public class MyService extends Service {
         option.setEnableSimulateGps(false);//可选，默认false，设置是否需要过滤gps仿真结果，默认需要
         mLocationClient.setLocOption(option);
     }
+
 
     public class MyLocation implements BDLocationListener {
 

@@ -11,6 +11,15 @@ public class UserData {
     private double LaLatitude;
     private double Longitude;
     private String type;
+    private String model;
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
 
     public String getType() {
         return type;
