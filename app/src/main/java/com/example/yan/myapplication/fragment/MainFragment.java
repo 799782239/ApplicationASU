@@ -19,6 +19,10 @@ import com.example.yan.myapplication.Config;
 import com.example.yan.myapplication.utils.MyThread;
 import com.example.yan.myapplication.R;
 import com.example.yan.myapplication.activity.SettingActivity;
+import com.example.yan.myapplication.utils.TimerUtils;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 import tools.BaseFragment;
 
@@ -33,6 +37,7 @@ public class MainFragment extends BaseFragment implements View.OnClickListener {
     private LinearLayout upLinearLayout;
     private Button upButton;
     private SharedPreferences sharedPreferences;
+    public static Timer mTimer;
 
     public MainFragment() {
         // Required empty public constructor
@@ -54,12 +59,15 @@ public class MainFragment extends BaseFragment implements View.OnClickListener {
         latitudeText.setText("暂无数据");
         timeText = (TextView) view.findViewById(R.id.timeText);
         timeText.setText("暂无数据");
-        if (Config.isFresh) {
-            Handler myHanler = new MyHanler();
-            myThread = new MyThread(myHanler);
-            myThread.start();
-            Config.isFresh = false;
-        }
+//        if (Config.isFresh) {
+        Handler myHanler = new MyHanler();
+//            myThread = new MyThread(myHanler);
+//            myThread.start();
+        TimerTask timerTask = new TimerUtils(myHanler);
+        mTimer = new Timer(true);
+        mTimer.schedule(timerTask, 0, 5000);
+//            Config.isFresh = false;
+//        }
         isPrepare = true;
         lazy();
         return view;
@@ -119,6 +127,30 @@ public class MainFragment extends BaseFragment implements View.OnClickListener {
                     break;
             }
         }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (mTimer != null) {
+            mTimer.cancel();
+            mTimer=null;
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+//        if (Config.isFresh) {
+        Handler myHanler = new MyHanler();
+//            myThread = new MyThread(myHanler);
+//            myThread.start();
+        TimerTask timerTask = new TimerUtils(myHanler);
+        if (mTimer == null) {
+            mTimer = new Timer(true);
+            mTimer.schedule(timerTask, 0, 5000);
+        }
+        Config.isFresh = false;
     }
 
 }

@@ -141,19 +141,21 @@ public class MyService extends Service {
                                 @Override
                                 public void successCallBack(String result) {
                                     Log.i("aa", result);
+                                    mContentResolver = getContentResolver();
+                                    mBackgroundQueryHandler = new BackgroundQueryHandler(mContentResolver);
                                     ContentValues c = new ContentValues();
-                                        c.put(DbConfig.ASU, asu);
-                                        c.put(DbConfig.ALTITUDE, mLatitude);
-                                        c.put(DbConfig.LONGITUDE, mLongitude);
-                                        c.put(DbConfig.TYPE, tempType);
-                                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                                        c.put(DbConfig.DATE, sdf.format(date));
-                                        mBackgroundQueryHandler.startInsert(0, null, DbConfig.CONTENT_NOTE_DATA_URI, c);
+                                    c.put(DbConfig.ASU, asu);
+                                    c.put(DbConfig.ALTITUDE, mLatitude);
+                                    c.put(DbConfig.LONGITUDE, mLongitude);
+                                    c.put(DbConfig.TYPE, tempType);
+                                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                                    c.put(DbConfig.DATE, sdf.format(date));
+                                    mBackgroundQueryHandler.startInsert(0, null, DbConfig.CONTENT_NOTE_DATA_URI, c);
                                 }
 
                                 @Override
                                 public void failCallBack() {
-                                    ToastUtils.MyToast(getApplicationContext(),"请检查网络");
+                                    ToastUtils.MyToast(getApplicationContext(), "请检查网络");
                                 }
 
                                 @Override

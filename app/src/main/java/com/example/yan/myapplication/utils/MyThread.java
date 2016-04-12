@@ -27,7 +27,7 @@ public class MyThread extends Thread {
             while (threadIsTrue) {
                 Message msg = new Message();
                 Bundle data = new Bundle();
-                if (SaveData.data.getAsu() == 0) {
+                if (SaveData.data.getAsu() == 0||SaveData.data==null) {
                 } else {
                     data.putInt("ASU", SaveData.data.getAsu());
                     data.putDouble("Latitude", SaveData.data.getLaLatitude());

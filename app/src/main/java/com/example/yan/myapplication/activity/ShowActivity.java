@@ -27,6 +27,9 @@ import java.util.List;
 
 import tools.MyFragmentViewPager;
 
+/**
+ * 主界面依赖的activity、
+ */
 public class ShowActivity extends AppCompatActivity {
     private ViewPagerAdapter mViewPagerAdapter;
     private TabLayout tableLayout;
@@ -41,7 +44,7 @@ public class ShowActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show);
-        MyThread.threadIsTrue = true;
+//        MyThread.threadIsTrue = true;
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         tableLayout = (TabLayout) findViewById(R.id.tabLayout);
         viewPager = (MyFragmentViewPager) findViewById(R.id.viewPager);
@@ -91,6 +94,10 @@ public class ShowActivity extends AppCompatActivity {
                         MyThread.threadIsTrue = false;
                         Config.isFresh = true;
                         SaveData.data = null;
+                        if (MainFragment.mTimer != null) {
+                            MainFragment.mTimer.cancel();
+                            MainFragment.mTimer = null;
+                        }
                         Intent stopIntent = new Intent("android.stop");
                         sendBroadcast(stopIntent);
                         Intent outIntent = new Intent(ShowActivity.this, NewLoginActivity.class);
