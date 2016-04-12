@@ -1,4 +1,4 @@
-package com.example.yan.myapplication;
+package com.example.yan.myapplication.activity;
 
 import android.app.Dialog;
 import android.app.ProgressDialog;
@@ -13,10 +13,12 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.yan.myapplication.Config;
+import com.example.yan.myapplication.R;
+import com.example.yan.myapplication.model.User;
 import com.google.gson.Gson;
 
 import org.xutils.common.Callback;
-import org.xutils.common.util.MD5;
 import org.xutils.http.RequestParams;
 import org.xutils.x;
 

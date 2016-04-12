@@ -1,17 +1,13 @@
-package com.example.yan.myapplication;
+package com.example.yan.myapplication.activity;
 
-import android.annotation.TargetApi;
 import android.app.Dialog;
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.Toast;
 
 import com.baidu.mapapi.SDKInitializer;
 import com.baidu.mapapi.map.BaiduMap;
@@ -25,6 +21,9 @@ import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.map.MarkerOptions;
 import com.baidu.mapapi.map.OverlayOptions;
 import com.baidu.mapapi.model.LatLng;
+import com.example.yan.myapplication.Config;
+import com.example.yan.myapplication.R;
+import com.example.yan.myapplication.model.SaveData;
 import com.example.yan.myapplication.vo.MapVo;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;

@@ -1,4 +1,4 @@
-package com.example.yan.myapplication;
+package com.example.yan.myapplication.activity;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -29,9 +29,10 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import org.xutils.common.Callback;
+import com.example.yan.myapplication.Config;
+import com.example.yan.myapplication.R;
+
 import org.xutils.http.RequestParams;
 import org.xutils.x;
 

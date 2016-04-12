@@ -1,4 +1,4 @@
-package com.example.yan.myapplication;
+package com.example.yan.myapplication.activity;
 
 import android.os.Handler;
 import android.os.Message;
@@ -6,12 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import lecho.lib.hellocharts.model.AxisValue;
-import lecho.lib.hellocharts.model.PointValue;
-import lecho.lib.hellocharts.view.LineChartView;
+import com.example.yan.myapplication.utils.MyThread;
+import com.example.yan.myapplication.R;
 
 public class MainActivity extends AppCompatActivity {
     private TextView asuText, longitudeText, latitudeText, timeText;

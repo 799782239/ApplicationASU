@@ -1,15 +1,16 @@
-package com.example.yan.myapplication;
+package com.example.yan.myapplication.utils;
 
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+
+import com.example.yan.myapplication.model.SaveData;
 
 import java.text.SimpleDateFormat;
 
 /**
  * Created by yan on 2015/12/10.
  */
-import com.example.yan.myapplication.MainActivity;
 
 public class MyThread extends Thread {
     private Handler myHanler;

@@ -1,4 +1,4 @@
-package com.example.yan.myapplication;
+package com.example.yan.myapplication.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +7,9 @@ import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceScreen;
+
+import com.example.yan.myapplication.service.MyService;
+import com.example.yan.myapplication.R;
 
 public class SettingFragment extends PreferenceFragment {
     private CheckBoxPreference checkBoxPreference;

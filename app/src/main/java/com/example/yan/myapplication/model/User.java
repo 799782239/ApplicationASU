@@ -1,4 +1,4 @@
-package com.example.yan.myapplication;
+package com.example.yan.myapplication.model;
 
 /**
  * Created by yan on 2016/1/8.

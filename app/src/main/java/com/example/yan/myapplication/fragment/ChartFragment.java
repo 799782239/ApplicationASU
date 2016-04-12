@@ -1,4 +1,4 @@
-package com.example.yan.myapplication;
+package com.example.yan.myapplication.fragment;
 
 
 import android.app.AlertDialog;
@@ -18,6 +18,8 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import com.example.yan.myapplication.R;
+import com.example.yan.myapplication.model.UserData;
 import com.yan.db.DbConfig;
 
 import java.util.ArrayList;

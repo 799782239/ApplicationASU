@@ -1,18 +1,11 @@
-package com.example.yan.myapplication;
+package com.example.yan.myapplication.model;
 
-import android.Manifest;
 import android.content.Context;
-import android.content.pm.PackageManager;
-import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
-import android.os.Bundle;
-import android.support.v4.app.ActivityCompat;
 import android.telephony.PhoneStateListener;
 import android.telephony.SignalStrength;
 import android.telephony.TelephonyManager;
-import android.util.Log;
-import android.widget.Toast;
+
+import com.example.yan.myapplication.Imp.PhoneStateCallBack;
 
 /**
  * Created by yan on 2015/12/4.

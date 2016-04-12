@@ -1,4 +1,4 @@
-package com.example.yan.myapplication;
+package com.example.yan.myapplication.adapter;
 
 
 import android.support.v4.app.Fragment;

@@ -1,10 +1,7 @@
-package com.example.yan.myapplication;
+package com.example.yan.myapplication.activity;
 
-import android.content.ContentResolver;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -15,9 +12,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
-import com.baidu.mapapi.BMapManager;
+import com.example.yan.myapplication.fragment.ChartFragment;
+import com.example.yan.myapplication.Config;
+import com.example.yan.myapplication.fragment.MainFragment;
+import com.example.yan.myapplication.service.MyService;
+import com.example.yan.myapplication.utils.MyThread;
+import com.example.yan.myapplication.R;
+import com.example.yan.myapplication.model.SaveData;
+import com.example.yan.myapplication.fragment.SortFragment;
+import com.example.yan.myapplication.adapter.ViewPagerAdapter;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 

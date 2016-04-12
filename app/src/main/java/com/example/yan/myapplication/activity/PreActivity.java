@@ -1,4 +1,4 @@
-package com.example.yan.myapplication;
+package com.example.yan.myapplication.activity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;

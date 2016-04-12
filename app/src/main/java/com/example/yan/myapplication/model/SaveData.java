@@ -1,7 +1,4 @@
-package com.example.yan.myapplication;
-
-import java.util.ArrayList;
-import java.util.List;
+package com.example.yan.myapplication.model;
 
 /**
  * Created by yan on 2015/12/8.

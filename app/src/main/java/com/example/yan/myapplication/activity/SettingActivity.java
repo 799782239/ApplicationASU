@@ -1,12 +1,14 @@
-package com.example.yan.myapplication;
+package com.example.yan.myapplication.activity;
 
-import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+
+import com.example.yan.myapplication.R;
+import com.example.yan.myapplication.fragment.SettingFragment;
 
 public class SettingActivity extends AppCompatActivity {
     private Toolbar toolbar;

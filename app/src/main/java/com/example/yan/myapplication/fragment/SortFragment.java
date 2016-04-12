@@ -1,4 +1,4 @@
-package com.example.yan.myapplication;
+package com.example.yan.myapplication.fragment;
 
 import android.content.AsyncQueryHandler;
 import android.content.ContentResolver;
@@ -14,6 +14,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.yan.myapplication.Config;
+import com.example.yan.myapplication.R;
+import com.example.yan.myapplication.activity.MapActivity;
 import com.example.yan.myapplication.vo.BeatWorldVo;
 import com.shinelw.library.ColorArcProgressBar;
 import com.yan.db.DbConfig;

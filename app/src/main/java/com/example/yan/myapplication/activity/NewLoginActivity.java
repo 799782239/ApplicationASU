@@ -1,6 +1,5 @@
-package com.example.yan.myapplication;
+package com.example.yan.myapplication.activity;
 
-import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -9,14 +8,13 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.example.yan.myapplication.Config;
+import com.example.yan.myapplication.R;
 import com.yan.db.DBHelper;
 
 import org.xutils.http.RequestParams;

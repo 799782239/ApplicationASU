@@ -1,4 +1,4 @@
-package com.example.yan.myapplication;
+package com.example.yan.myapplication.service;
 
 import android.app.Service;
 import android.content.AsyncQueryHandler;
@@ -15,21 +15,23 @@ import android.support.annotation.Nullable;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
+import com.example.yan.myapplication.Config;
 import com.example.yan.myapplication.Imp.OperateCallBack;
+import com.example.yan.myapplication.model.MyPhoneState;
+import com.example.yan.myapplication.Imp.PhoneStateCallBack;
+import com.example.yan.myapplication.model.SaveData;
+import com.example.yan.myapplication.model.UserData;
 import com.example.yan.myapplication.operate.BaseOperate;
 import com.example.yan.myapplication.utils.ToastUtils;
 import com.google.gson.Gson;
 import com.yan.db.DbConfig;
 
-import org.json.JSONObject;
-import org.xutils.common.Callback;
 import org.xutils.http.RequestParams;
 import org.xutils.x;
 
@@ -139,6 +141,14 @@ public class MyService extends Service {
                                 @Override
                                 public void successCallBack(String result) {
                                     Log.i("aa", result);
+                                    ContentValues c = new ContentValues();
+                                        c.put(DbConfig.ASU, asu);
+                                        c.put(DbConfig.ALTITUDE, mLatitude);
+                                        c.put(DbConfig.LONGITUDE, mLongitude);
+                                        c.put(DbConfig.TYPE, tempType);
+                                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                                        c.put(DbConfig.DATE, sdf.format(date));
+                                        mBackgroundQueryHandler.startInsert(0, null, DbConfig.CONTENT_NOTE_DATA_URI, c);
                                 }
 
                                 @Override

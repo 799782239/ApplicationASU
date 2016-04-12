@@ -1,4 +1,4 @@
-package com.example.yan.myapplication;
+package com.example.yan.myapplication.fragment;
 
 
 import android.content.Context;
@@ -14,6 +14,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.example.yan.myapplication.Config;
+import com.example.yan.myapplication.utils.MyThread;
+import com.example.yan.myapplication.R;
+import com.example.yan.myapplication.activity.SettingActivity;
 
 import tools.BaseFragment;
 

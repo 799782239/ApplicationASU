@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
     android:fitsSystemWindows="true"
-    tools:context="com.example.yan.myapplication.ScrollingActivity">
+    tools:context=".activity.ScrollingActivity">
 
 
     <TextView
