@@ -12,6 +12,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 
+import com.example.yan.myapplication.activity.NewLoginActivity;
+
 
 /**
  * Created by yan on 2015/12/30.
@@ -42,7 +44,7 @@ public class MyContentProvider extends ContentProvider {
         Cursor c = null;
         switch (mURI_MATCHER.match(uri)) {
             case URI_ASU:
-                c = db.rawQuery("SELECT * FROM " + DbConfig.TABLE_NAME + " WHERE date " + sortOrder, null);
+                c = db.rawQuery("SELECT * FROM " + DbConfig.TABLE_NAME + NewLoginActivity.user + " WHERE date " + sortOrder, null);
                 break;
             case URI_AVG:
                 c = db.rawQuery(sortOrder, null);
@@ -63,6 +65,7 @@ public class MyContentProvider extends ContentProvider {
     @Override
     public Uri insert(Uri uri, ContentValues values) {
         SQLiteDatabase db = mDbHelper.getWritableDatabase();
+        db.execSQL(DBHelper.createSqlUtil(NewLoginActivity.user));
         long id = db.insert(DbConfig.TABLE_NAME, null, values);
         if (id > 0) {
             getContext().getContentResolver().notifyChange(

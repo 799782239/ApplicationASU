@@ -163,6 +163,9 @@ public class ChartFragment extends BaseFragment implements View.OnClickListener 
         protected void onQueryComplete(int token, Object cookie, Cursor cursor) {
             super.onQueryComplete(token, cookie, cursor);
             datas.clear();
+            if (cursor == null) {
+                return;
+            }
             while (cursor.moveToNext()) {
                 UserData data = new UserData();
                 data.setAsu(cursor.getInt(cursor.getColumnIndex(DbConfig.ASU)));

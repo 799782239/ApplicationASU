@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.example.yan.myapplication.Config;
 import com.example.yan.myapplication.R;
 import com.example.yan.myapplication.activity.MapActivity;
+import com.example.yan.myapplication.activity.NewLoginActivity;
 import com.example.yan.myapplication.vo.BeatWorldVo;
 import com.shinelw.library.ColorArcProgressBar;
 import com.yan.db.DbConfig;
@@ -65,7 +66,7 @@ public class SortFragment extends BaseFragment implements View.OnClickListener {
             return;
         }
         SortFragment.MyQuery myQuery = new MyQuery(getActivity().getContentResolver());
-        myQuery.startQuery(0, null, DbConfig.CONTENT_AVG_ASU_URI, null, null, null, "SELECT AVG(asu) AS OrderAverage FROM " + DbConfig.TABLE_NAME);
+        myQuery.startQuery(0, null, DbConfig.CONTENT_AVG_ASU_URI, null, null, null, "SELECT AVG(asu) AS OrderAverage FROM " + DbConfig.TABLE_NAME + NewLoginActivity.user);
         System.out.println("------------send----------");
     }
 
@@ -143,6 +144,9 @@ public class SortFragment extends BaseFragment implements View.OnClickListener {
         @Override
         protected void onQueryComplete(int token, Object cookie, Cursor cursor) {
             super.onQueryComplete(token, cookie, cursor);
+            if (cursor == null) {
+                return;
+            }
             while (cursor.moveToNext()) {
                 avgAsu = cursor.getDouble(cursor.getColumnIndex("OrderAverage"));
                 Format format = new DecimalFormat(".##");

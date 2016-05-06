@@ -27,9 +27,21 @@ public class DBHelper extends SQLiteOpenHelper {
         super(context, "asuDb.db", null, 1);
     }
 
+    public static String createSqlUtil(String name) {
+        String createSql = "CREATE TABLE IF NOT EXISTS " + DbConfig.TABLE_NAME + name
+                + "(" + DbConfig.ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                + DbConfig.ASU + " INTEGER,"
+                + DbConfig.ALTITUDE + " DOUBLE,"
+                + DbConfig.LONGITUDE + " DOUBLE,"
+                + DbConfig.DATE + " TEXT NOT NULL DEFAULT '',"
+                + DbConfig.TYPE + " TEXT NOT NULL DEFAULT ''"
+                + ")";
+        return createSql;
+    }
+
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(CREATE_SQL);
+//        db.execSQL(CREATE_SQL);
     }
 
     @Override

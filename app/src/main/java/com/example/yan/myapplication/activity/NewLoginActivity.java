@@ -27,6 +27,7 @@ public class NewLoginActivity extends AppCompatActivity {
     private EditText nameEditText, passwordEditText;
     private SharedPreferences mPreferences;
     private CheckBox checkBox;
+    public static String user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -117,6 +118,7 @@ public class NewLoginActivity extends AppCompatActivity {
         protected void onPostExecute(String s) {
 
             if (s.equals("success")) {
+                user = userName;
                 DBHelper dbHelper = new DBHelper(getApplicationContext());
                 Intent intent = new Intent(NewLoginActivity.this, ShowActivity.class);
                 startActivity(intent);

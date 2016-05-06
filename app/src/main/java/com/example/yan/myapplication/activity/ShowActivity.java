@@ -98,6 +98,7 @@ public class ShowActivity extends AppCompatActivity {
                             MainFragment.mTimer.cancel();
                             MainFragment.mTimer = null;
                         }
+                        NewLoginActivity.user = null;
                         Intent stopIntent = new Intent("android.stop");
                         sendBroadcast(stopIntent);
                         Intent outIntent = new Intent(ShowActivity.this, NewLoginActivity.class);

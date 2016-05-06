@@ -65,6 +65,7 @@ public class MainFragment extends BaseFragment implements View.OnClickListener {
 //            myThread.start();
         TimerTask timerTask = new TimerUtils(myHanler);
         mTimer = new Timer(true);
+        //刷新间隔为5s
         mTimer.schedule(timerTask, 0, 5000);
 //            Config.isFresh = false;
 //        }
