@@ -60,7 +60,7 @@
         <activity android:name=".activity.NewLoginActivity" />
         <activity android:name=".activity.SettingActivity" />
         <activity android:name=".activity.RegisterActivity" />
-        <activity android:name=".activity.ShowActivity"></activity>
+        <activity android:name=".activity.ShowActivity" />
 
         <provider
             android:name="com.yan.db.MyContentProvider"
@@ -78,6 +78,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.WebActivity"></activity>
     </application>
 
 </manifest>

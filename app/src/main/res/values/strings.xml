@@ -93,4 +93,8 @@
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="asu_app">Asu Location App</string>
+    <string name="pass_login">免登录</string>
+    <string name="asu_loginapp">Register Asu Location</string>
+    <string name="login_asu_location">Login Asu Location</string>
 </resources>

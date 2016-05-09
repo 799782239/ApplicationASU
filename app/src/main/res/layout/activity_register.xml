@@ -12,14 +12,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="104dp"
         android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        android:text="@string/asu_loginapp"
+        android:textSize="32sp" />
 
     <ImageView
         android:id="@+id/registerlogo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/title"
         android:foregroundGravity="center"
+        android:padding="16dp"
         android:src="@mipmap/loginlogo" />
 
     <android.support.design.widget.TextInputLayout
@@ -27,8 +38,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/registerlogo"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginRight="48dp"
         android:background="@color/colorLoginBg"
         android:orientation="horizontal">
 
@@ -36,11 +47,12 @@
             android:id="@+id/registerPhone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="8dp"
             android:hint="@string/prompt_phone"
             android:inputType="phone"
             android:maxLines="1"
-            android:singleLine="true" />
+            android:singleLine="true"
+            android:textColor="@color/colorLightGrey" />
 
     </android.support.design.widget.TextInputLayout>
 
@@ -50,23 +62,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/registerRN"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginRight="48dp"
+        android:layout_marginTop="16dp"
         android:background="@color/colorLoginBg">
 
         <EditText
             android:id="@+id/registerPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="8dp"
             android:hint="@string/prompt_password"
             android:imeActionId="@+id/register"
             android:imeActionLabel="@string/action_sign_in_short"
             android:imeOptions="actionUnspecified"
             android:inputType="textPassword"
             android:maxLines="1"
-            android:singleLine="true" />
+            android:singleLine="true"
+            android:textColor="@color/colorLightGrey" />
 
     </android.support.design.widget.TextInputLayout>
 
@@ -75,23 +88,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/registerRP"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginRight="48dp"
+        android:layout_marginTop="16dp"
         android:background="@color/colorLoginBg">
 
         <EditText
             android:id="@+id/registerPasswordAgain"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="8dp"
             android:hint="@string/prompt_password"
             android:imeActionId="@+id/register"
             android:imeActionLabel="@string/action_sign_in_short"
             android:imeOptions="actionUnspecified"
             android:inputType="textPassword"
             android:maxLines="1"
-            android:singleLine="true" />
+            android:singleLine="true"
+            android:textColor="@color/colorLightGrey" />
 
     </android.support.design.widget.TextInputLayout>
 
@@ -102,21 +116,32 @@
         android:layout_height="wrap_content"
         android:layout_alignWithParentIfMissing="false"
         android:layout_below="@+id/registerRPAgain"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginRight="48dp"
+        android:layout_marginTop="16dp"
         android:allowUndo="false"
         android:background="@drawable/selector"
         android:text="@string/register"
         android:textColor="@color/colorWhite"
         android:textSize="20sp" />
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:layout_below="@+id/registerbtn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:background="@color/colorPress"
+        android:text="@string/login"
+        android:textColor="@color/colorWhite"
+        android:textSize="12sp" />
 
     <ImageView
         android:id="@+id/checkPhone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/registerRN"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_alignParentRight="true"
         android:layout_below="@+id/registerlogo"
-        android:layout_marginLeft="10dp"
+        android:layout_marginRight="16dp"
         android:layout_marginTop="20dp" />
 </RelativeLayout>

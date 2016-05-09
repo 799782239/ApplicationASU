@@ -26,7 +26,7 @@ import tools.MD5Tool;
 
 public class RegisterActivity extends AppCompatActivity {
     private EditText phoneEditText, passwordEditText, checkEditText;
-    private Button registerButton;
+    private Button registerButton, loginButton;
     private ImageView checkImageView;
     private Boolean check = false;
 
@@ -40,6 +40,14 @@ public class RegisterActivity extends AppCompatActivity {
         checkEditText = (EditText) findViewById(R.id.registerPasswordAgain);
         registerButton = (Button) findViewById(R.id.registerbtn);
         checkImageView = (ImageView) findViewById(R.id.checkPhone);
+        loginButton = (Button) findViewById(R.id.btn_login);
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(RegisterActivity.this, NewLoginActivity.class));
+                finish();
+            }
+        });
         phoneEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
@@ -55,11 +63,11 @@ public class RegisterActivity extends AppCompatActivity {
                         @Override
                         public void onSuccess(String result) {
                             if (result.equals("exist")) {
-                                checkImageView.setImageDrawable(getResources().getDrawable(android.R.drawable.ic_delete));
+                                checkImageView.setImageDrawable(getResources().getDrawable(R.mipmap.close));
                                 phoneEditText.requestFocus();
                                 phoneEditText.setError("用户已存在");
                             } else if (result.equals("success")) {
-                                checkImageView.setImageResource(android.R.drawable.ic_input_add);
+                                checkImageView.setImageResource(R.mipmap.correct);
                                 check = true;
                             }
                         }
