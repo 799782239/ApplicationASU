@@ -23,6 +23,7 @@ import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.example.yan.myapplication.Config;
 import com.example.yan.myapplication.Imp.OperateCallBack;
+import com.example.yan.myapplication.activity.NewLoginActivity;
 import com.example.yan.myapplication.model.MyPhoneState;
 import com.example.yan.myapplication.Imp.PhoneStateCallBack;
 import com.example.yan.myapplication.model.SaveData;
@@ -125,6 +126,7 @@ public class MyService extends Service {
                             userData.setModel(model);
                             tempType = type;
                             userData.setType(tempType);
+                            userData.setUser(NewLoginActivity.user);
                             SaveData.data = userData;
 //                            System.out.println(SaveData.data.get(SaveData.data.size() - 1).getAsu() + ":" + SaveData.data.get(SaveData.data.size() - 1).getDate());
                             Gson gson = new Gson();

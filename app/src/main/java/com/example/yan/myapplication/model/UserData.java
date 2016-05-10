@@ -12,6 +12,15 @@ public class UserData {
     private double Longitude;
     private String type;
     private String model;
+    private String user;
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
 
     public String getModel() {
         return model;
