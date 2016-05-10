@@ -66,7 +66,7 @@ public class MyContentProvider extends ContentProvider {
     public Uri insert(Uri uri, ContentValues values) {
         SQLiteDatabase db = mDbHelper.getWritableDatabase();
         db.execSQL(DBHelper.createSqlUtil(NewLoginActivity.user));
-        long id = db.insert(DbConfig.TABLE_NAME, null, values);
+        long id = db.insert(DbConfig.TABLE_NAME + NewLoginActivity.user, null, values);
         if (id > 0) {
             getContext().getContentResolver().notifyChange(
                     ContentUris.withAppendedId(DbConfig.CONTENT_NOTE_DATA_URI,
