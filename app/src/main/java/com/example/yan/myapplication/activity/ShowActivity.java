@@ -11,6 +11,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.example.yan.myapplication.fragment.ChartFragment;
 import com.example.yan.myapplication.Config;
@@ -39,6 +40,7 @@ public class ShowActivity extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private Toolbar toolbar;
     private NavigationView navigationView;
+    private TextView userTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +53,8 @@ public class ShowActivity extends AppCompatActivity {
         mViewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
         toolbar = (Toolbar) findViewById(R.id.toolBar);
         drawerLayout = (DrawerLayout) findViewById(R.id.showDrawer);
+        userTextView = (TextView) navigationView.getHeaderView(0).findViewById(R.id.text_name);
+        userTextView.setText(NewLoginActivity.user + "");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.app_name, R.string.hello_blank_fragment);

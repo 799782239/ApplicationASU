@@ -97,4 +97,11 @@
     <string name="pass_login">免登录</string>
     <string name="asu_loginapp">Register Asu Location</string>
     <string name="login_asu_location">Login Asu Location</string>
+    <string name="around">周围的人</string>
+    <string name="setting">设置</string>
+    <string name="share">分享</string>
+    <string name="loginout">退出登录</string>
+    <string name="sort">数据统计</string>
+    <string name="function">功能</string>
+    <string name="usermanager">账户管理</string>
 </resources>
