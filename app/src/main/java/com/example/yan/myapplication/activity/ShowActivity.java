@@ -113,6 +113,9 @@ public class ShowActivity extends AppCompatActivity {
                         Intent mapIntent = new Intent(ShowActivity.this, MapActivity.class);
                         startActivity(mapIntent);
                         break;
+                    case R.id.nav_sort:
+                        startActivity(new Intent(ShowActivity.this, WebActivity.class));
+                        break;
                     default:
                         drawerLayout.closeDrawers();
 
