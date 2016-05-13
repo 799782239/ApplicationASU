@@ -6,12 +6,12 @@
     tools:context=".activity.SettingActivity">
 
     <android.support.v7.widget.Toolbar
-        android:id="@+id/setting_toolbar"
+        android:id="@+id/setting_toolBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <FrameLayout
-        android:layout_below="@+id/setting_toolbar"
+        android:layout_below="@+id/setting_toolBar"
         android:id="@+id/settingFrame"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
