@@ -2,6 +2,7 @@ package com.example.yan.myapplication.activity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -52,6 +53,7 @@ public class ShowActivity extends AppCompatActivity {
         viewPager = (MyFragmentViewPager) findViewById(R.id.viewPager);
         mViewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
         toolbar = (Toolbar) findViewById(R.id.toolBar);
+        toolbar.setTitle("实时数据");
         drawerLayout = (DrawerLayout) findViewById(R.id.showDrawer);
         userTextView = (TextView) navigationView.getHeaderView(0).findViewById(R.id.text_name);
         userTextView.setText(NewLoginActivity.user + "");
@@ -129,6 +131,17 @@ public class ShowActivity extends AppCompatActivity {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
+                switch (tab.getPosition()) {
+                    case 0:
+                        toolbar.setTitle("实时数据");
+                        break;
+                    case 1:
+                        toolbar.setTitle("本地统计");
+                        break;
+                    case 2:
+                        toolbar.setTitle("分享");
+                        break;
+                }
             }
 
             @Override

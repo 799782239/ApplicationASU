@@ -13,9 +13,9 @@
         android:id="@+id/startTimeTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
+        android:layout_marginLeft="32dp"
         android:layout_marginTop="16dp"
-        android:text="startTime"
+        android:text="@string/start_time"
         android:textSize="24sp" />
 
 
@@ -24,9 +24,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/startTimeTextView"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="4dp"
-        android:text="2015-1-1 0:0:0" />
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="8dp"
+        android:text="2015-01-01 00:00:00" />
 
 
     <TextView
@@ -34,9 +34,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/startTimeEdit"
-        android:layout_marginLeft="16dp"
+        android:layout_marginLeft="32dp"
         android:layout_marginTop="16dp"
-        android:text="endtime"
+        android:text="@string/end_time"
         android:textSize="24sp" />
 
     <TextView
@@ -44,9 +44,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/endTimeTextView"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="4dp"
-        android:text="2015-1-1 0:0:0" />
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="8dp"
+        android:text="2015-01-01 00:00:00" />
 
 
     <lecho.lib.hellocharts.view.LineChartView
@@ -54,7 +54,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/endTimeEdit"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:visibility="gone" />
 
     <lecho.lib.hellocharts.view.PreviewLineChartView
@@ -65,16 +65,16 @@
         android:visibility="gone" />
 
 
-    <ImageButton
+    <Button
         android:id="@+id/showChart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/endTimeTextView"
-        android:layout_alignEnd="@+id/endTimeTextView"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="30dp"
-        android:background="@android:color/transparent"
-        android:src="@android:drawable/ic_menu_rotate" />
+        android:layout_marginRight="32dp"
+        android:layout_marginTop="64dp"
+        android:background="@color/colorMainLine"
+        android:text="查询"
+        android:textColor="@color/colorWhite" />
 
 
 </RelativeLayout>

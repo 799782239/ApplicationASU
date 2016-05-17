@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.baidu.mapapi.SDKInitializer;
@@ -37,7 +38,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class MapActivity extends AppCompatActivity implements View.OnClickListener {
+public class MapActivity extends BaseActivity {
     private MapView bMapView;
     private Toolbar toolbar;
     private BaiduMap mBaiduMap;
@@ -50,7 +51,8 @@ public class MapActivity extends AppCompatActivity implements View.OnClickListen
         setContentView(R.layout.activity_map);
         x.Ext.init(getApplication());
         bMapView = (MapView) findViewById(R.id.baidu_map);
-        toolbar = (Toolbar) findViewById(R.id.map_toolbar);
+        initTitle();
+//        toolbar = (Toolbar) findViewById(R.id.toolBar);
         //地图初始化
         mBaiduMap = bMapView.getMap();
 //        System.out.println("asdasdasdasdasdasd" + SaveData.data.getAsu() + "");
@@ -62,29 +64,22 @@ public class MapActivity extends AppCompatActivity implements View.OnClickListen
             MapStatusUpdate mapStatusUpdate = MapStatusUpdateFactory.newMapStatus(mapStatus);
             mBaiduMap.setMapStatus(mapStatusUpdate);
         }
-        //设置toolbar
-        setSupportActionBar(toolbar);
-        //设置toolbar后调用setDisplayHomeAsUpEnabled
-        toolbar.setNavigationIcon(R.drawable.back);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-//                Intent i = new Intent(MapActivity.this, ShowActivity.class);
-//                startActivity(i);
-                finish();
-            }
-        });
+//        //设置toolbar
+//        setSupportActionBar(toolbar);
+//        //设置toolbar后调用setDisplayHomeAsUpEnabled
+//        toolbar.setNavigationIcon(R.drawable.back);
+//        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+////                Intent i = new Intent(MapActivity.this, ShowActivity.class);
+////                startActivity(i);
+//                finish();
+//            }
+//        });
         MapAsy mapAsy = new MapAsy();
         mapAsy.execute();
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.map_toolbar:
-
-        }
-    }
 
     public class MapAsy extends AsyncTask<String, String, List<MapVo>> {
         private String result;
@@ -146,5 +141,10 @@ public class MapActivity extends AppCompatActivity implements View.OnClickListen
             }
             dialog.dismiss();
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return super.onOptionsItemSelected(item);
     }
 }

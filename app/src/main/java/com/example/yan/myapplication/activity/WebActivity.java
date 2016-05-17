@@ -7,7 +7,7 @@ import android.webkit.WebViewClient;
 
 import com.example.yan.myapplication.R;
 
-public class WebActivity extends AppCompatActivity {
+public class WebActivity extends BaseActivity {
     private WebView mWebView;
     private String WebURL = "http://120.27.122.62:146/main.php";
 
@@ -15,6 +15,7 @@ public class WebActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_web);
+        initTitle();
         mWebView = (WebView) findViewById(R.id.web);
         mWebView.loadUrl(WebURL);
         mWebView.getSettings().setJavaScriptEnabled(true);

@@ -13,6 +13,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -42,7 +43,7 @@ import tools.BaseFragment;
 public class ChartFragment extends BaseFragment implements View.OnClickListener {
 
     private TextView startTime, endTime;
-    private ImageButton imageButton;
+    private Button imageButton;
     private boolean isPrepare;
     //chart
     private List<UserData> datas = new ArrayList<>();
@@ -62,7 +63,7 @@ public class ChartFragment extends BaseFragment implements View.OnClickListener 
         View view = inflater.inflate(R.layout.activity_scrolling, null);
         startTime = (TextView) view.findViewById(R.id.startTimeEdit);
         endTime = (TextView) view.findViewById(R.id.endTimeEdit);
-        imageButton = (ImageButton) view.findViewById(R.id.showChart);
+        imageButton = (Button) view.findViewById(R.id.showChart);
         lineChartView = (LineChartView) view.findViewById(R.id.lineChart1);
         imageButton.setOnClickListener(this);
         startTime.setOnClickListener(this);
