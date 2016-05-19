@@ -106,7 +106,7 @@ public class ShowActivity extends AppCompatActivity {
                             MainFragment.mTimer.cancel();
                             MainFragment.mTimer = null;
                         }
-                        NewLoginActivity.user = null;
+//                        NewLoginActivity.user = null;
                         SharePreferencesUtil.putData("", getApplicationContext(), Config.SHARE_USER_NAME, Config.SHARE_USER_CONFIG);
                         SharePreferencesUtil.putData(false, getApplicationContext(), Config.SHARE_USER_CONFIG, Config.SHARE_TOKEN);
                         Intent stopIntent = new Intent("android.stop");

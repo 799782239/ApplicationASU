@@ -29,7 +29,7 @@ public class NewLoginActivity extends AppCompatActivity {
     private EditText nameEditText, passwordEditText;
     private SharedPreferences mPreferences;
     private CheckBox checkBox;
-    public static String user;
+//    public static String user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,7 +116,7 @@ public class NewLoginActivity extends AppCompatActivity {
         protected void onPostExecute(String s) {
 
             if (s.equals("success")) {
-                user = userName;
+//                user = userName;
                 DBHelper dbHelper = new DBHelper(getApplicationContext());
                 SharePreferencesUtil.putData(userName, getApplicationContext(), Config.SHARE_USER_CONFIG, Config.SHARE_USER_NAME);
                 if (checkBox.isChecked()) {
