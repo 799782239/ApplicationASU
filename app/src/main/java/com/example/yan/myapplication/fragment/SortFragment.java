@@ -29,6 +29,7 @@ import java.text.DecimalFormat;
 import java.text.Format;
 
 import tools.BaseFragment;
+import tools.SharePreferencesUtil;
 
 /**
  * Created by yan on 2016/1/21.
@@ -65,8 +66,9 @@ public class SortFragment extends BaseFragment implements View.OnClickListener {
             System.out.println("exit");
             return;
         }
+        String name = SharePreferencesUtil.getData(getContext(), Config.SHARE_USER_CONFIG, Config.SHARE_USER_NAME, "");
         SortFragment.MyQuery myQuery = new MyQuery(getActivity().getContentResolver());
-        myQuery.startQuery(0, null, DbConfig.CONTENT_AVG_ASU_URI, null, null, null, "SELECT AVG(asu) AS OrderAverage FROM " + DbConfig.TABLE_NAME + NewLoginActivity.user);
+        myQuery.startQuery(0, null, DbConfig.CONTENT_AVG_ASU_URI, null, null, null, "SELECT AVG(asu) AS OrderAverage FROM " + DbConfig.TABLE_NAME + name);
         System.out.println("------------send----------");
     }
 

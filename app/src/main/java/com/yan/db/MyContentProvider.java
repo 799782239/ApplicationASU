@@ -12,7 +12,10 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 
+import com.example.yan.myapplication.Config;
 import com.example.yan.myapplication.activity.NewLoginActivity;
+
+import tools.SharePreferencesUtil;
 
 
 /**
@@ -44,7 +47,8 @@ public class MyContentProvider extends ContentProvider {
         Cursor c = null;
         switch (mURI_MATCHER.match(uri)) {
             case URI_ASU:
-                c = db.rawQuery("SELECT * FROM " + DbConfig.TABLE_NAME + NewLoginActivity.user + " WHERE date " + sortOrder, null);
+                String name = SharePreferencesUtil.getData(getContext(), Config.SHARE_USER_CONFIG, Config.SHARE_USER_NAME, "");
+                c = db.rawQuery("SELECT * FROM " + DbConfig.TABLE_NAME + name + " WHERE date " + sortOrder, null);
                 break;
             case URI_AVG:
                 c = db.rawQuery(sortOrder, null);
@@ -65,8 +69,9 @@ public class MyContentProvider extends ContentProvider {
     @Override
     public Uri insert(Uri uri, ContentValues values) {
         SQLiteDatabase db = mDbHelper.getWritableDatabase();
-        db.execSQL(DBHelper.createSqlUtil(NewLoginActivity.user));
-        long id = db.insert(DbConfig.TABLE_NAME + NewLoginActivity.user, null, values);
+        String name = SharePreferencesUtil.getData(getContext(), Config.SHARE_USER_CONFIG, Config.SHARE_USER_NAME, "");
+        db.execSQL(DBHelper.createSqlUtil(name));
+        long id = db.insert(DbConfig.TABLE_NAME + name, null, values);
         if (id > 0) {
             getContext().getContentResolver().notifyChange(
                     ContentUris.withAppendedId(DbConfig.CONTENT_NOTE_DATA_URI,

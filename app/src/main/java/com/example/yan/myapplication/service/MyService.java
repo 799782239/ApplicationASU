@@ -41,6 +41,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import tools.SharePreferencesUtil;
+
 /**
  * Created by yan on 2015/12/8.
  */
@@ -60,6 +62,7 @@ public class MyService extends Service {
     private Date date;
     private int asu;
     private String tempType;
+    private String userName;
 
     @Nullable
     @Override
@@ -92,6 +95,9 @@ public class MyService extends Service {
         upData = sharedPreferences.getBoolean("switch_connect", true);
         myReciver = new MyReciver(this);
         registerReceiver(myReciver, new IntentFilter("android.stop"));
+        userName = SharePreferencesUtil.getData(getApplicationContext(), Config.SHARE_USER_CONFIG, Config.SHARE_USER_NAME, "");
+
+
         //int age=sharePreferences.getInt("Age",20);
         // 这句话的意思是先从sharePreferences里面找key 为“Age”的数据，如果有，说明你事先保存过，那就取“Age”对应的值，也就是你事先保存过的值，如果没找到key 为“
         // Age”的，最后的 int age 将被赋予你给的默认值20，也就是说那仅仅是一个默认值，只有在从sp对象里取值失败的时候才会使用。
@@ -126,7 +132,7 @@ public class MyService extends Service {
                             userData.setModel(model);
                             tempType = type;
                             userData.setType(tempType);
-                            userData.setUser(NewLoginActivity.user);
+                            userData.setUser(userName);
                             SaveData.data = userData;
 //                            System.out.println(SaveData.data.get(SaveData.data.size() - 1).getAsu() + ":" + SaveData.data.get(SaveData.data.size() - 1).getDate());
                             Gson gson = new Gson();

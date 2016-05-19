@@ -59,7 +59,6 @@ public class ShowActivity extends AppCompatActivity {
         drawerLayout = (DrawerLayout) findViewById(R.id.showDrawer);
         userTextView = (TextView) navigationView.getHeaderView(0).findViewById(R.id.text_name);
         userTextView.setText(SharePreferencesUtil.getData(getApplicationContext(), Config.SHARE_USER_CONFIG, Config.SHARE_USER_NAME, "") + "");
-        Log.i("aaa", SharePreferencesUtil.getData(this, Config.SHARE_USER_CONFIG, Config.SHARE_USER_NAME, ""));
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.app_name, R.string.hello_blank_fragment);
