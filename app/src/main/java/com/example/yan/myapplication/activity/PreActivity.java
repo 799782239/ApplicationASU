@@ -5,6 +5,10 @@ import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.example.yan.myapplication.Config;
+
+import tools.SharePreferencesUtil;
+
 public class PreActivity extends AppCompatActivity {
     private SharedPreferences mSharedPreferences;
     private Intent i;
@@ -12,14 +16,12 @@ public class PreActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mSharedPreferences = getSharedPreferences("userConfig", MODE_PRIVATE);
-        if (mSharedPreferences.getBoolean("isFirst", true)) {
-            SharedPreferences.Editor editor = mSharedPreferences.edit();
-            editor.putBoolean("isFirst", false);
-            editor.commit();
+//        SharePreferencesUtil sharePreferencesUtil = new SharePreferencesUtil();
+        if (SharePreferencesUtil.getData(this, Config.SHARE_USER_CONFIG, Config.SHARE_USER_IS_FIRST, true)) {
+            SharePreferencesUtil.putData(false, this, Config.SHARE_USER_CONFIG, Config.SHARE_USER_IS_FIRST);
             i = new Intent(PreActivity.this, RegisterActivity.class);
         } else {
-            if (mSharedPreferences.getBoolean("Token", false)) {
+            if (SharePreferencesUtil.getData(this, Config.SHARE_USER_CONFIG, Config.SHARE_TOKEN, false)) {
                 i = new Intent(PreActivity.this, ShowActivity.class);
             } else {
                 i = new Intent(PreActivity.this, NewLoginActivity.class);
@@ -27,6 +29,5 @@ public class PreActivity extends AppCompatActivity {
         }
         startActivity(i);
         finish();
-
     }
 }

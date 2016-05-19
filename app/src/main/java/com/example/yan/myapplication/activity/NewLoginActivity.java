@@ -7,6 +7,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -21,6 +22,7 @@ import org.xutils.http.RequestParams;
 import org.xutils.x;
 
 import tools.MD5Tool;
+import tools.SharePreferencesUtil;
 
 public class NewLoginActivity extends AppCompatActivity {
     private Button button, registerButton;
@@ -46,15 +48,11 @@ public class NewLoginActivity extends AppCompatActivity {
         checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (checkBox.isChecked()) {
-                    SharedPreferences.Editor editor = mPreferences.edit();
-                    editor.putBoolean("Token", true);
-                    editor.commit();
-                } else {
-                    SharedPreferences.Editor editor = mPreferences.edit();
-                    editor.putBoolean("Token", false);
-                    editor.commit();
-                }
+//                if (checkBox.isChecked()) {
+//                    SharePreferencesUtil.putData(true, getApplicationContext(), Config.SHARE_USER_CONFIG, Config.SHARE_TOKEN);
+//                } else {
+//                    SharePreferencesUtil.putData(false, getApplicationContext(), Config.SHARE_USER_CONFIG, Config.SHARE_TOKEN);
+//                }
             }
         });
         button.setOnClickListener(new View.OnClickListener() {
@@ -120,11 +118,17 @@ public class NewLoginActivity extends AppCompatActivity {
             if (s.equals("success")) {
                 user = userName;
                 DBHelper dbHelper = new DBHelper(getApplicationContext());
+                SharePreferencesUtil.putData(userName, getApplicationContext(), Config.SHARE_USER_CONFIG, Config.SHARE_USER_NAME);
+                if (checkBox.isChecked()) {
+                    SharePreferencesUtil.putData(true, getApplicationContext(), Config.SHARE_USER_CONFIG, Config.SHARE_TOKEN);
+                } else {
+                    SharePreferencesUtil.putData(false, getApplicationContext(), Config.SHARE_USER_CONFIG, Config.SHARE_TOKEN);
+                }
                 Intent intent = new Intent(NewLoginActivity.this, ShowActivity.class);
                 startActivity(intent);
-                SharedPreferences.Editor editor = mPreferences.edit();
-                editor.putString("userName", userName);
-                editor.commit();
+//                SharedPreferences.Editor editor = mPreferences.edit();
+//                editor.putString("userName", userName);
+//                editor.commit();
                 dialog.dismiss();
                 finish();
             } else if (s.equals("net")) {

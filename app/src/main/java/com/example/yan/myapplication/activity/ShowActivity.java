@@ -11,6 +11,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
 
@@ -28,6 +29,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import tools.MyFragmentViewPager;
+import tools.SharePreferencesUtil;
 
 /**
  * 主界面依赖的activity、
@@ -56,7 +58,8 @@ public class ShowActivity extends AppCompatActivity {
         toolbar.setTitle("实时数据");
         drawerLayout = (DrawerLayout) findViewById(R.id.showDrawer);
         userTextView = (TextView) navigationView.getHeaderView(0).findViewById(R.id.text_name);
-        userTextView.setText(NewLoginActivity.user + "");
+        userTextView.setText(SharePreferencesUtil.getData(getApplicationContext(), Config.SHARE_USER_CONFIG, Config.SHARE_USER_NAME, "") + "");
+        Log.i("aaa", SharePreferencesUtil.getData(this, Config.SHARE_USER_CONFIG, Config.SHARE_USER_NAME, ""));
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.app_name, R.string.hello_blank_fragment);
@@ -105,6 +108,8 @@ public class ShowActivity extends AppCompatActivity {
                             MainFragment.mTimer = null;
                         }
                         NewLoginActivity.user = null;
+                        SharePreferencesUtil.putData("", getApplicationContext(), Config.SHARE_USER_NAME, Config.SHARE_USER_CONFIG);
+                        SharePreferencesUtil.putData(false, getApplicationContext(), Config.SHARE_USER_CONFIG, Config.SHARE_TOKEN);
                         Intent stopIntent = new Intent("android.stop");
                         sendBroadcast(stopIntent);
                         Intent outIntent = new Intent(ShowActivity.this, NewLoginActivity.class);

@@ -37,16 +37,9 @@
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="d3PrvrLjBWuAqHWbbDns0tOW" />
 
-        <activity
-            android:name=".activity.ScrollingActivity"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".activity.PreviewColumnChartActivity" />
-        <activity android:name=".activity.LineChartActivity" />
 
         <uses-permission android:name="android.permission.CHANGE_NEWWORK_STATE" />
-
-        <activity android:name=".activity.MainActivity" />
 
         <service android:name=".service.MyService" />
         <service

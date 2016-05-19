@@ -30,4 +30,8 @@ public class BaseActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    public void setTitle(String title) {
+        toolbar.setTitle(title);
+    }
 }
