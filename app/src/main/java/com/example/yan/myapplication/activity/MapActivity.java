@@ -58,7 +58,7 @@ public class MapActivity extends BaseActivity {
         mBaiduMap = bMapView.getMap();
 //        System.out.println("asdasdasdasdasdasd" + SaveData.data.getAsu() + "");
 //        System.out.println("asdasdasdasdasdasd" + SaveData.data.getDate() + "");
-        if (SaveData.data.getDate() != null) {
+        if (SaveData.data != null) {
             LatLng latLng = new LatLng(SaveData.data.getLaLatitude(), SaveData.data.getLongitude());
             MapStatus mapStatus = new MapStatus.Builder().target(latLng).zoom(16).build();
             //更新状态

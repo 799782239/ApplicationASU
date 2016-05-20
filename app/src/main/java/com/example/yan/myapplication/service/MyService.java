@@ -9,6 +9,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.location.Geocoder;
 import android.net.Uri;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
@@ -21,6 +22,12 @@ import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
+import com.baidu.mapapi.model.LatLng;
+import com.baidu.mapapi.search.geocode.GeoCodeResult;
+import com.baidu.mapapi.search.geocode.GeoCoder;
+import com.baidu.mapapi.search.geocode.OnGetGeoCoderResultListener;
+import com.baidu.mapapi.search.geocode.ReverseGeoCodeOption;
+import com.baidu.mapapi.search.geocode.ReverseGeoCodeResult;
 import com.example.yan.myapplication.Config;
 import com.example.yan.myapplication.Imp.OperateCallBack;
 import com.example.yan.myapplication.activity.NewLoginActivity;
@@ -63,6 +70,7 @@ public class MyService extends Service {
     private int asu;
     private String tempType;
     private String userName;
+    private String mAddress;
 
     @Nullable
     @Override
@@ -133,6 +141,8 @@ public class MyService extends Service {
                             tempType = type;
                             userData.setType(tempType);
                             userData.setUser(userName);
+                            userData.setAddress(mAddress);
+                            Log.i("location", mAddress);
                             SaveData.data = userData;
 //                            System.out.println(SaveData.data.get(SaveData.data.size() - 1).getAsu() + ":" + SaveData.data.get(SaveData.data.size() - 1).getDate());
                             Gson gson = new Gson();
@@ -251,6 +261,7 @@ public class MyService extends Service {
         public void onReceiveLocation(BDLocation bdLocation) {
             mLatitude = bdLocation.getLatitude();
             mLongitude = bdLocation.getLongitude();
+            mAddress = bdLocation.getAddress().address;
             StringBuffer sb = new StringBuffer(256);
             if (bdLocation.getLocType() == BDLocation.TypeServerError) {
                 sb.append("\ndescribe : ");

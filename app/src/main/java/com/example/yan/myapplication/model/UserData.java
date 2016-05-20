@@ -13,6 +13,15 @@ public class UserData {
     private String type;
     private String model;
     private String user;
+    private String address;
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
     public String getUser() {
         return user;

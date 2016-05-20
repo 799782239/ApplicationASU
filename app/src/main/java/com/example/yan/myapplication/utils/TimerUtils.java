@@ -36,6 +36,7 @@ public class TimerUtils extends TimerTask {
                 data.putDouble("Longitude", SaveData.data.getLongitude());
                 SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
                 data.putString("time", sdf.format(System.currentTimeMillis()));
+                data.putString("address",SaveData.data.getAddress());
                 msg.setData(data);
                 msg.what = 1;
                 mHandler.sendMessage(msg);

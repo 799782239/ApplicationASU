@@ -31,7 +31,7 @@ import tools.BaseFragment;
  */
 public class MainFragment extends BaseFragment implements View.OnClickListener {
 
-    private TextView asuText, longitudeText, latitudeText, timeText;
+    private TextView asuText, longitudeText, latitudeText, timeText, addressText;
     private MyThread myThread;
     private boolean isPrepare;
     private LinearLayout upLinearLayout;
@@ -59,6 +59,8 @@ public class MainFragment extends BaseFragment implements View.OnClickListener {
         latitudeText.setText("暂无数据");
         timeText = (TextView) view.findViewById(R.id.timeText);
         timeText.setText("暂无数据");
+        addressText = (TextView) view.findViewById(R.id.addressText);
+        addressText.setText("暂无数据");
 //        if (Config.isFresh) {
         Handler myHanler = new MyHanler();
 //            myThread = new MyThread(myHanler);
@@ -114,12 +116,14 @@ public class MainFragment extends BaseFragment implements View.OnClickListener {
                             latitudeText.setText(data.getDouble("Latitude") + "");
                             longitudeText.setText(data.getDouble("Longitude") + "");
                             timeText.setText(data.getString("time") + "");
+                            addressText.setText(data.getString("address") + "");
                             upLinearLayout.setVisibility(View.GONE);
                         } else {
                             asuText.setText("暂无数据" + "");
                             latitudeText.setText("暂无数据" + "");
                             longitudeText.setText("暂无数据" + "");
                             timeText.setText("暂无数据" + "");
+                            addressText.setText("暂无数据" + "");
                             upLinearLayout.setVisibility(View.VISIBLE);
                         }
                     } catch (Exception e) {
@@ -135,7 +139,7 @@ public class MainFragment extends BaseFragment implements View.OnClickListener {
         super.onPause();
         if (mTimer != null) {
             mTimer.cancel();
-            mTimer=null;
+            mTimer = null;
         }
     }
 
