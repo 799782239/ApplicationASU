@@ -13,9 +13,11 @@ import com.example.yan.myapplication.R;
  */
 public class BaseActivity extends AppCompatActivity {
     private Toolbar toolbar;
+    private String title;
 
     public void initTitle() {
         toolbar = (Toolbar) this.findViewById(R.id.toolBar);
+        toolbar.setTitle(this.title);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
@@ -32,6 +34,6 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     public void setTitle(String title) {
-        toolbar.setTitle(title);
+        this.title = title;
     }
 }

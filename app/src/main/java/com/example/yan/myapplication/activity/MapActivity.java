@@ -51,6 +51,7 @@ public class MapActivity extends BaseActivity {
         setContentView(R.layout.activity_map);
         x.Ext.init(getApplication());
         bMapView = (MapView) findViewById(R.id.baidu_map);
+        setTitle("周围的人");
         initTitle();
 //        toolbar = (Toolbar) findViewById(R.id.toolBar);
         //地图初始化
