@@ -106,6 +106,5 @@ public class MyPhoneState extends PhoneStateListener {
         }
         phoneStateCallBack.phoneStateSuccess(Integer.valueOf(signalStrength
                 .getGsmSignalStrength()), tempType);
-//        Toast.makeText(context, sb.toString() + "La" + outLatitude + "Lo" + outLongitude, Toast.LENGTH_SHORT).show();
     }
 }

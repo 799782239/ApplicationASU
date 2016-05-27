@@ -19,4 +19,10 @@ public class Config {
     public static final String SHARE_USER_IS_FIRST="isFirst";
     public static final String SHARE_TOKEN="token";
 
+
+    public static final String LATITUDE="latitude";
+    public static final String LONGITUDE="longitude";
+    public static final String ASU="asu";
+    public static final String DATE="date";
+
 }

@@ -1,13 +1,13 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">ASULocation</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_login">Sign in</string>
 
     <!-- Strings related to login -->
-    <string name="prompt_phone">Phone</string>
-    <string name="prompt_password">Password (optional)</string>
-    <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
+    <string name="prompt_phone">用户名</string>
+    <string name="prompt_password">密码</string>
+    <string name="action_sign_in">登陆或注册</string>
+    <string name="action_sign_in_short">登录</string>
     <string name="error_invalid_Phone">This phone is invalid</string>
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_incorrect_password">This password is incorrect</string>
@@ -74,15 +74,15 @@
     <string name="pref_ringtone_silent">Silent</string>
 
     <string name="pref_title_vibrate">Vibrate</string>
-    <string name="login">Sign in</string>
-    <string name="register">Register</string>
+    <string name="login">登录</string>
+    <string name="register">注册</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string-array name="uptime">
-        <item>default</item>
-        <item>1minutes</item>
-        <item>30minutes</item>
+        <item>默认</item>
+        <item>1分钟</item>
+        <item>30分钟</item>
     </string-array>
     <integer-array name="uptimeInt">
         <item>0</item>
@@ -93,10 +93,10 @@
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="asu_app">Asu Location App</string>
+    <string name="asu_app">信号强度监测</string>
     <string name="pass_login">免登录</string>
-    <string name="asu_loginapp">Register Asu Location</string>
-    <string name="login_asu_location">Login Asu Location</string>
+    <string name="asu_loginapp">注册账户</string>
+    <string name="login_asu_location">登录系统</string>
     <string name="around">周围的人</string>
     <string name="setting">设置</string>
     <string name="share">分享</string>

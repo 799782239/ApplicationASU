@@ -4,7 +4,7 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimaryDark">@color/colorLoginBg</item>
         <item name="colorAccent">@color/colorLightGrey</item>
         <item name="android:textColor">@color/colorMainLine</item>
         <item name="android:textColorHint">@color/colorLightGrey</item>

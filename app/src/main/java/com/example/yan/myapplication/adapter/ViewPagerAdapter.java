@@ -26,7 +26,7 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
         this.myFragment = myFragment;
     }
 
-    private String title[] = {"main", "sort", "my"};
+    private String title[] = {"实时数据", "本地数据", "分享比较"};
 
 
     @Override

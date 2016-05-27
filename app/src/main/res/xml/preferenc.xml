@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <PreferenceCategory android:title="First Category">
+    <PreferenceCategory android:title="上传管理">
         <CheckBoxPreference
             android:defaultValue="true"
             android:key="switch_connect"
-            android:summaryOff="close up data"
-            android:summaryOn="allow up data"
-            android:title="switch up data" />
+            android:summaryOff="不允许上传"
+            android:summaryOn="允许上传"
+            android:title="上传设置" />
         <ListPreference
             android:defaultValue="default"
             android:entries="@array/uptime"

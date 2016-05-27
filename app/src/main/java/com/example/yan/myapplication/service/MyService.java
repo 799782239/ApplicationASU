@@ -184,44 +184,7 @@ public class MyService extends Service {
                                 }
                             }, getApplicationContext());
 
-//                            mContentResolver = getContentResolver();
-//                            x.http().post(params, new Callback.CommonCallback<String>() {
-//                                @Override
-//                                public void onSuccess(String result) {
-//                                    if (result.equals("success")) {
-//                                        System.out.println("------success--->");
-//                                        mBackgroundQueryHandler = new BackgroundQueryHandler(mContentResolver);
-//                                        ContentValues c = new ContentValues();
-//                                        c.put(DbConfig.ASU, asu);
-//                                        c.put(DbConfig.ALTITUDE, mLatitude);
-//                                        c.put(DbConfig.LONGITUDE, mLongitude);
-//                                        c.put(DbConfig.TYPE, tempType);
-//                                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-//                                        c.put(DbConfig.DATE, sdf.format(date));
-//                                        mBackgroundQueryHandler.startInsert(0, null, DbConfig.CONTENT_NOTE_DATA_URI, c);
-//                                    } else {
-//                                        Toast.makeText(getApplicationContext(), "未能成功上传", Toast.LENGTH_SHORT).show();
-//                                    }
-//                                    System.out.println("-----result-->" + result);
-//                                }
-//
-//                                @Override
-//                                public void onError(Throwable ex, boolean isOnCallback) {
-//                                    Toast.makeText(x.app(), ex.getMessage() + "", Toast.LENGTH_SHORT);
-//                                    System.out.println("------error----->" + ex.getMessage());
-//                                }
-//
-//                                @Override
-//                                public void onCancelled(CancelledException cex) {
-//
-//                                }
-//
-//                                @Override
-//                                public void onFinished() {
-//
-//                                }
-//
-//                            });
+
                             System.out.println(str);
 
                         }
@@ -335,8 +298,6 @@ public class MyService extends Service {
 
         @Override
         protected void onInsertComplete(int token, Object cookie, Uri uri) {
-            // Toast.makeText(getActivity(), "完成写入",
-            // Toast.LENGTH_SHORT).show();
             System.out.println("pause");
             super.onInsertComplete(token, cookie, uri);
         }

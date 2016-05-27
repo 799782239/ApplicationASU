@@ -3,22 +3,33 @@ package com.example.yan.myapplication.activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.baidu.mapapi.SDKInitializer;
 import com.baidu.mapapi.map.BaiduMap;
 import com.baidu.mapapi.map.BaiduMapOptions;
 import com.baidu.mapapi.map.BitmapDescriptor;
 import com.baidu.mapapi.map.BitmapDescriptorFactory;
+import com.baidu.mapapi.map.InfoWindow;
+import com.baidu.mapapi.map.MapPoi;
 import com.baidu.mapapi.map.MapStatus;
 import com.baidu.mapapi.map.MapStatusUpdate;
 import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MapView;
+import com.baidu.mapapi.map.Marker;
 import com.baidu.mapapi.map.MarkerOptions;
 import com.baidu.mapapi.map.OverlayOptions;
 import com.baidu.mapapi.model.LatLng;
@@ -28,6 +39,7 @@ import com.example.yan.myapplication.model.SaveData;
 import com.example.yan.myapplication.vo.MapVo;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.yan.db.DbConfig;
 
 import org.xutils.http.RequestParams;
 import org.xutils.x;
@@ -43,6 +55,8 @@ public class MapActivity extends BaseActivity {
     private Toolbar toolbar;
     private BaiduMap mBaiduMap;
     private BaiduMapOptions mapOptions;
+    private CardView cardView;
+    private List<OverlayOptions> overlayOptionsList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,13 +65,51 @@ public class MapActivity extends BaseActivity {
         setContentView(R.layout.activity_map);
         x.Ext.init(getApplication());
         bMapView = (MapView) findViewById(R.id.baidu_map);
+
         setTitle("周围的人");
         initTitle();
 //        toolbar = (Toolbar) findViewById(R.id.toolBar);
         //地图初始化
         mBaiduMap = bMapView.getMap();
-//        System.out.println("asdasdasdasdasdasd" + SaveData.data.getAsu() + "");
-//        System.out.println("asdasdasdasdasdasd" + SaveData.data.getDate() + "");
+        mBaiduMap.setOnMapClickListener(new BaiduMap.OnMapClickListener() {
+            @Override
+            public void onMapClick(LatLng latLng) {
+                Log.i("map", "onclick");
+                mBaiduMap.hideInfoWindow();
+            }
+
+            @Override
+            public boolean onMapPoiClick(MapPoi mapPoi) {
+                return false;
+            }
+        });
+        mBaiduMap.setOnMarkerClickListener(new BaiduMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+                Toast.makeText(getApplicationContext(), "dianji", Toast.LENGTH_SHORT).show();
+//                LayoutInflater inflater = getLayoutInflater();
+//                View view = inflater.inflate(R.layout.map_content, null);
+//                CardView cardView = (CardView) view.findViewById(R.id.cardview);
+                Button button = new Button(getApplicationContext());
+                button.setBackgroundResource(R.mipmap.content);
+                //定义用于显示该InfoWindow的坐标点
+                LatLng pt = new LatLng(Double.valueOf(marker.getExtraInfo().getString(DbConfig.ALTITUDE))
+                        , Double.valueOf(marker.getExtraInfo().getString(DbConfig.LONGITUDE)));
+                //创建InfoWindow , 传入 view， 地理坐标， y 轴偏移量
+                BitmapDescriptor bitmapDescriptor = BitmapDescriptorFactory.fromView(button);
+                InfoWindow mInfoWindow = new InfoWindow(bitmapDescriptor, pt, -47, new InfoWindow.OnInfoWindowClickListener() {
+                    @Override
+                    public void onInfoWindowClick() {
+                        Log.i("map", "onclick");
+                        mBaiduMap.hideInfoWindow();
+                    }
+                });
+
+                //显示InfoWindow
+                mBaiduMap.showInfoWindow(mInfoWindow);
+                return true;
+            }
+        });
         if (SaveData.data != null) {
             LatLng latLng = new LatLng(SaveData.data.getLaLatitude(), SaveData.data.getLongitude());
             MapStatus mapStatus = new MapStatus.Builder().target(latLng).zoom(16).build();
@@ -65,18 +117,6 @@ public class MapActivity extends BaseActivity {
             MapStatusUpdate mapStatusUpdate = MapStatusUpdateFactory.newMapStatus(mapStatus);
             mBaiduMap.setMapStatus(mapStatusUpdate);
         }
-//        //设置toolbar
-//        setSupportActionBar(toolbar);
-//        //设置toolbar后调用setDisplayHomeAsUpEnabled
-//        toolbar.setNavigationIcon(R.drawable.back);
-//        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-////                Intent i = new Intent(MapActivity.this, ShowActivity.class);
-////                startActivity(i);
-//                finish();
-//            }
-//        });
         MapAsy mapAsy = new MapAsy();
         mapAsy.execute();
     }
@@ -131,13 +171,19 @@ public class MapActivity extends BaseActivity {
                     LatLng point = new LatLng(Double.valueOf(mapVos.get(i).getLatitude()), Double.valueOf(mapVos.get(i).getLongitude()));
                     //构建Marker图标
                     BitmapDescriptor bitmap = BitmapDescriptorFactory
-                            .fromResource(R.drawable.icon_gcoding);
+                            .fromResource(R.mipmap.icon_map);
                     //构建MarkerOption，用于在地图上添加Marker
                     OverlayOptions option = new MarkerOptions()
                             .position(point)
                             .icon(bitmap);
                     //在地图上添加Marker，并显示
-                    mBaiduMap.addOverlay(option);
+                    overlayOptionsList.add(option);
+                    Marker marker = (Marker) mBaiduMap.addOverlay(option);
+                    Bundle bundle = new Bundle();
+                    bundle.putString(DbConfig.ALTITUDE, mapVos.get(i).getLatitude());
+                    bundle.putString(DbConfig.LONGITUDE, mapVos.get(i).getLongitude());
+                    bundle.putString(DbConfig.ASU, mapVos.get(i).getAsu());
+                    marker.setExtraInfo(bundle);
                 }
             }
             dialog.dismiss();
@@ -148,4 +194,5 @@ public class MapActivity extends BaseActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         return super.onOptionsItemSelected(item);
     }
+
 }
